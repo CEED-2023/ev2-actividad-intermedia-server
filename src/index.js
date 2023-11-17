@@ -1,13 +1,12 @@
 // Import the framework and instantiate it
 import Fastify from 'fastify'
+import firstRoute from './our-first-route.js'
+
 const fastify = Fastify({
   logger: true
 })
 
-// Declare a route
-fastify.get('/', async function handler (request, reply) {
-  return { hello: 'world' }
-})
+fastify.register(firstRoute)
 
 // Run the server!
 try {
@@ -16,3 +15,4 @@ try {
   fastify.log.error(err)
   process.exit(1)
 }
+
