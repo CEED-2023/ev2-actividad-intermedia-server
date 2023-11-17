@@ -1,0 +1,14 @@
+{
+  "name": "ev2-actividad-intermedia-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Alvaro Maceda <alvaro@alvaromaceda.es>",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "node ./src/index.js"
+  },
+  "dependencies": {
+    "fastify": "^4.24.3"
+  }
+}
