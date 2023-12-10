@@ -1,154 +1,84 @@
-id,parent_id,name
-A1B2C3D4,,Corporate
-B5C6D7E8,A1B2C3D4,Finance
-C8D9E0F1,B5C6D7E8,Accounts Payable
-D2E3F4G5,B5C6D7E8,Accounts Receivable
-E6F7G8H9,C8D9E0F1,Payroll
-F0G1H2I3,C8D9E0F1,Budgeting
-G4H5I6J7,D2E3F4G5,Marketing
-H8I9J0K1,D2E3F4G5,Advertising
-I2J3K4L5,D2E3F4G5,Public Relations
-J6K7L8M9,H8I9J0K1,Social Media
-K0L1M2N3,H8I9J0K1,Email Marketing
-L4M5N6O7,H8I9J0K1,Content Creation
-M8N9O0P1,H8I9J0K1,Event Planning
-N2O3P4Q5,G4H5I6J7,IT
-O6P7Q8R9,G4H5I6J7,Software Development
-P0Q1R2S3,G4H5I6J7,Systems Administration
-Q4R5S6T7,G4H5I6J7,Database Management
-R8S9T0U1,O6P7Q8R9,Web Development
-S2T3U4V5,O6P7Q8R9,Mobile App Development
-T6U7V8W9,O6P7Q8R9,Network Security
-U0V1W2X3,R8S9T0U1,Front-end Development
-V4W5X6Y7,R8S9T0U1,Back-end Development
-W8X9Y0Z1,R8S9T0U1,UI/UX Design
-X2Y3Z4A5,R8S9T0U1,Quality Assurance
-Y6Z7A8B9,R8S9T0U1,DevOps
-Z0A1B2C3,Q4R5S6T7,Human Resources
-A4B5C6D7,Q4R5S6T7,Employee Relations
-B8C9D0E1,Z0A1B2C3,Recruitment
-C2D3E4F5,Z0A1B2C3,Training and Development
-D6E7F8G9,C2D3E4F5,Leadership Development
-E0F1G2H3,C2D3E4F5,Performance Management
-F4G5H6I7,C2D3E4F5,Employee Engagement
-G8H9I0J1,E0F1G2H3,Legal
-H2I3J4K5,E0F1G2H3,Compliance
-I6J7K8L9,H2I3J4K5,Contracts
-J0K1L2M3,H2I3J4K5,Intellectual Property
-K2L3M4N5,I6J7K8L9,Regulatory Affairs
-L6M7N8O9,I6J7K8L9,Privacy
-M0N1O2P3,I6J7K8L9,Environmental Law
-N4O5P6Q7,J0K1L2M3,Public Affairs
-O8P9Q0R1,J0K1L2M3,Corporate Social Responsibility
-P2Q3R4S5,J0K1L2M3,Community Relations
-Q6R7S8T9,K2L3M4N5,Research and Development
-R0S1T2U3,K2L3M4N5,Innovation
-S4T5U6V7,K2L3M4N5,Technology Research
-T8U9V0W1,K2L3M4N5,Product Development
-U2V3W4X5,S4T5U6V7,Robotics
-V6W7X8Y9,S4T5U6V7,Biotechnology
-W0X1Y2Z3,S4T5U6V7,Nanotechnology
-X4Y5Z6A7,S4T5U6V7,Artificial Intelligence
-Y8Z9A0B1,S4T5U6V7,Space Exploration
-Z2A3B4C5,T8U9V0W1,Consumer Electronics
-A6B7C8D9,T8U9V0W1,Software Products
-B0C1D2E3,T8U9V0W1,Hardware Products
-C4D5E6F7,T8U9V0W1,Medical Devices
-D8E9F0G1,T8U9V0W1,Automotive Technology
-E2F3G4H5,,Logistics
-F6G7H8I9,E2F3G4H5,Supply Chain
-G0H1I2J3,E2F3G4H5,Inventory Management
-H4I5J6K7,E2F3G4H5,Shipping
-I8J9K0L1,H4I5J6K7,International Shipping
-J2K3L4M5,H4I5J6K7,Domestic Shipping
-K6L7M8N9,,Sales
-L0M1N2O3,K6L7M8N9,Retail Sales
-M4N5O6P7,K6L7M8N9,Corporate Sales
-N8O9P0Q1,K6L7M8N9,Online Sales
-O2P3Q4R5,K6L7M8N9,Channel Sales
-P6Q7R8S9,L0M1N2O3,Customer Service
-Q0R1S2T3,L0M1N2O3,Technical Support
-R4S5T6U7,L0M1N2O3,Order Processing
-S8T9U0V1,L0M1N2O3,Returns and Exchanges
-U2V3W4X5,L0M1N2O3,Complaint Resolution
-V6W7X8Y9,,Quality Assurance
-W0X1Y2Z3,V6W7X8Y9,Quality Control
-X4Y5Z6A7,V6W7X8Y9,Testing
-Y8Z9A0B1,V6W7X8Y9,Quality Management
-Z2A3B4C5,V6W7X8Y9,Process Improvement
-A6B7C8D9,,Facilities
-B0C1D2E3,A6B7C8D9,Office Management
-C4D5E6F7,A6B7C8D9,Space Planning
-D8E9F0G1,C4D5E6F7,Facility Maintenance
-E2F3G4H5,D8E9F0G1,Security
-F6G7H8I9,D8E9F0G1,Safety
-G0H1I2J3,F6G7H8I9,Access Control
-H4I5J6K7,F6G7H8I9,Surveillance
-I8J9K0L1,F6G7H8I9,Incident Response
-J2K3L4M5,,Research
-K6L7M8N9,J2K3L4M5,Market Research
-L0M1N2O3,J2K3L4M5,Competitor Analysis
-M4N5O6P7,J2K3L4M5,Consumer Insights
-N8O9P0Q1,K6L7M8N9,Scientific Research
-O2P3Q4R5,K6L7M8N9,Medical Research
-P6Q7R8S9,K6L7M8N9,Environmental Research
-Q0R1S2T3,K6L7M8N9,Social Research
-R4S5T6U7,N8O9P0Q1,Pharmaceutical Research
-S8T9U0V1,N8O9P0Q1,Biomedical Research
-U2V3W4X5,N8O9P0Q1,Genetic Research
-V6W7X8Y9,N8O9P0Q1,Health Research
-W0X1Y2Z3,K6L7M8N9,Technology Research
-X4Y5Z6A7,K6L7M8N9,Innovation
-Y8Z9A0B1,K6L7M8N9,Product Development
-Z2A3B4C5,K6L7M8N9,Technology Development
-A6B7C8D9,K6L7M8N9,Prototyping
-B0C1D2E3,K6L7M8N9,Testing and Validation
-C4D5E6F7,K6L7M8N9,Product Launch
-D8E9F0G1,K6L7M8N9,Project Management
-E2F3G4H5,D8E9F0G1,Agile Methodology
-F6G7H8I9,D8E9F0G1,Scrum Framework
-G0H1I2J3,E2F3G4H5,Software Development
-H4I5J6K7,E2F3G4H5,Web Development
-I8J9K0L1,E2F3G4H5,Mobile App Development
-J2K3L4M5,E2F3G4H5,Database Management
-K6L7M8N9,E2F3G4H5,Quality Assurance
-L0M1N2O3,E2F3G4H5,DevOps
-M4N5O6P7,H0I1J2K3,Supply Chain Management
-N8O9P0Q1,H0I1J2K3,Procurement
-O2P3Q4R5,H0I1J2K3,Inventory Management
-P6Q7R8S9,N8O9P0Q1,Logistics
-Q0R1S2T3,N8O9P0Q1,Transportation
-R4S5T6U7,N8O9P0Q1,Warehousing
-S8T9U0V1,M4N5O6P7,Quality Management
-U2V3W4X5,M4N5O6P7,Supplier Quality
-V6W7X8Y9,M4N5O6P7,Process Improvement
-W0X1Y2Z3,M4N5O6P7,Six Sigma
-X4Y5Z6A7,M4N5O6P7,Continuous Improvement
-Y8Z9A0B1,S8T9U0V1,Return Merchandise Authorization
-Z2A3B4C5,S8T9U0V1,Customer Returns
-A6B7C8D9,S8T9U0V1,Product Recalls
-B0C1D2E3,S8T9U0V1,Refurbishment
-C4D5E6F7,S8T9U0V1,Disposal
-D8E9F0G1,,Customer Service
-E2F3G4H5,D8E9F0G1,Inbound Calls
-F6G7H8I9,D8E9F0G1,Outbound Calls
-G0H1I2J3,D8E9F0G1,Live Chat
-H4I5J6K7,D8E9F0G1,Email Support
-I8J9K0L1,D8E9F0G1,Social Media Support
-J2K3L4M5,D8E9F0G1,Technical Support
-K6L7M8N9,D8E9F0G1,Order Processing
-L0M1N2O3,D8E9F0G1,Returns and Exchanges
-M4N5O6P7,D8E9F0G1,Complaint Resolution
-N8O9P0Q1,H4I5J6K7,Employee Relations
-O2P3Q4R5,H4I5J6K7,Conflict Resolution
-P6Q7R8S9,H4I5J6K7,Employee Counseling
-Q0R1S2T3,H4I5J6K7,Performance Management
-R4S5T6U7,H4I5J6K7,Employee Recognition
-S8T9U0V1,H4I5J6K7,Workplace Safety
-U2V3W4X5,H4I5J6K7,Workplace Diversity
-V6W7X8Y9,H4I5J6K7,Employee Engagement
-W0X1Y2Z3,H4I5J6K7,Team Building
-X4Y5Z6A7,H0I1J2K3,Training and Development
-Y8Z9A0B1,H0I1J2K3,Employee Training
-Z2A3B4C5,H0I1J2K3,Leadership Development
-A6B7C8D9,H0I1J2K3,Onboarding
+C1D2E3F4,Recursos Humanos
+G5H6I7J8,Finanzas
+K9L0M1N2,Desarrollo de Producto
+O3P4Q5R6,Ventas
+S7T8U9V0,Tecnología de la Información
+W1X2Y3Z4,Comunicaciones
+A5B6C7D8,Operaciones
+E9F0G1H2,Investigación y Desarrollo
+I3J4K5L6,Servicio al Cliente
+M7N8O9P0,Calidad
+Q1R2S3T4,Logística
+U5V6W7X8,Legal
+Y9Z0A1B2,Desarrollo Empresarial
+C3D4E5F6,Marketing
+G7H8I9J0,Compras
+K1L2M3N4,Recursos Ambientales
+O5P6Q7R8,Desarrollo Sostenible
+S9T0U1V2,Innovación
+W3X4Y5Z6,Relaciones Públicas
+A7B8C9D0,Recursos Educativos
+E1F2G3H4,Seguridad
+I5J6K7L8,Asuntos Regulatorios
+M9N0O1P2,Control de Calidad
+Q3R4S5T6,Planificación Estratégica
+U7V8W9X0,Compliance
+Y1Z2A3B4,Servicios Corporativos
+C5D6E7F8,Desarrollo de Negocios
+G9H0I1J2,Investigación de Mercado
+K3L4M5N6,Relaciones Laborales
+O7P8Q9R0,Desarrollo de Talento
+S1T2U3V4,Ingeniería
+W5X6Y7Z8,Desarrollo de Software
+A9B0C1D2,Publicidad
+E3F4G5H6,Producción
+I7J8K9L0,Planificación Financiera
+M1N2O3P4,Estrategia de Producto
+Q5R6S7T8,Asesoría Legal
+U9V0W1X2,Desarrollo de Marca
+Y3Z4A5B6,Asuntos Públicos
+C7D8E9F0,Recursos Culturales
+G1H2I3J4,Servicios de Consultoría
+K5L6M7N8,Desarrollo de Proyectos
+O9P0Q1R2,Innovación Tecnológica
+S3T4U5V6,Control de Procesos
+W7X8Y9Z0,Planificación de Eventos
+A1B2C3D4,Relaciones Internacionales
+E5F6G7H8,Gestión de Proyectos
+I9J0K1L2,Comunicación Interna
+M3N4O5P6,Desarrollo Web
+Q7R8S9T0,Desarrollo de Producto
+U1V2W3X4,Análisis de Datos
+Y5Z6A7B8,Sostenibilidad
+C9D0E1F2,Operaciones Globales
+G3H4I5J6,Ingeniería de Sistemas
+K7L8M9N0,Desarrollo de Mercado
+O1P2Q3R4,Innovación de Producto
+S5T6U7V8,Asuntos Corporativos
+W9X0Y1Z2,Gestión de Riesgos
+A3B4C5D6,Educación Continua
+E7F8G9H0,Desarrollo de Contenidos
+I1J2K3L4,Planificación de Recursos
+M5N6O7P8,Asesoría Financiera
+Q9R0S1T2,Desarrollo de Aplicaciones
+U3V4W5X6,Investigación Científica
+Y7Z8A9B0,Servicio al Cliente Global
+C1D2E3F4,Relaciones Comunitarias
+G5H6I7J8,Desarrollo de Estrategias
+K9L0M1N2,Gestión de Datos
+O3P4Q5R6,Asuntos Ambientales
+S7T8U9V0,Desarrollo Organizacional
+W1X2Y3Z4,Ingeniería de Calidad
+A5B6C7D8,Planificación de Proyectos
+E9F0G1H2,Investigación Social
+I3J4K5L6,Desarrollo de Recursos
+M7N8O9P0,Asesoría Tecnológica
+Q1R2S3T4,Comunicación Estratégica
+U5V6W7X8,Desarrollo de Habilidades
+Y9Z0A1B2,Servicios de Salud
+C3D4E5F6,Desarrollo de Alianzas
+G7H8I9J0,Análisis Financiero
+K1L2M3N4,Desarrollo de Políticas
+O5P6Q7R8,Innovación Social
+S9T0U1V2,Desarrollo de Negocios Internacionales
+W3X4Y5Z6,Planificación de Marketing
