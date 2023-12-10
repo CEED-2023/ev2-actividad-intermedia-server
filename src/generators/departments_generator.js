@@ -114,7 +114,10 @@ function* departmentIterator() {
 }
 
 function randomDepartment() {
-  return DEPARTMENT_NAMES[Math.floor(Math.random() * DEPARTMENT_NAMES.length)]
+  return {
+    id: generateRandomID(),
+    name: DEPARTMENT_NAMES[Math.floor(Math.random() * DEPARTMENT_NAMES.length)]
+  }
 }
 
 export {
