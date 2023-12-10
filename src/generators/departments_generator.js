@@ -1,3 +1,5 @@
+import { random } from "./random.js"
+
 const DEPARTMENT_NAMES = [
   'Recursos Humanos',
   'Finanzas',
@@ -90,7 +92,7 @@ function generateRandomID() {
   let randomString = '';
 
   for (let i = 0; i < 8; i++) {
-    const randomIndex = Math.floor(Math.random() * characters.length);
+    const randomIndex = Math.floor(random() * characters.length);
     randomString += characters.charAt(randomIndex);
   }
 
@@ -100,7 +102,7 @@ function generateRandomID() {
 function fisherYatesshuffle(array) {
   const shuffled = [...array]
   for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
+    const j = Math.floor(random() * (i + 1));
     [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
   }
 

@@ -1,3 +1,5 @@
+import { random } from "./random.js"
+
 const NAMES = [
   'Carlos',
   'Andrea',
@@ -102,7 +104,7 @@ const NAMES = [
 ]
 
 function randomName() {
-  return NAMES[Math.floor(Math.random() * NAMES.length)]
+  return NAMES[Math.floor(random() * NAMES.length)]
 }
 
 export default randomName
