@@ -1,5 +1,9 @@
-import  generate from './names/name_generator.js';
+import generateName from './generators/name_generator.js';
+import { departmentIterator } from './generators/departments_generator.js';
 
+for(let i=0;i<10;i++) console.log(generateName());
 
-for(let i=0;i<10;i++) console.log(generate());
-
+const iterator = departmentIterator()
+for (const element of iterator) {
+  console.log(element);
+}
