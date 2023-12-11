@@ -2,7 +2,7 @@ import { setSeed, random } from './generators/random.js';
 import generateName from './generators/name_generator.js';
 import { departmentIterator } from './generators/departments_generator.js';
 
-setSeed(1234)
+//setSeed(1234)
 
 const iterator = departmentIterator();
 
@@ -27,6 +27,20 @@ function generateEmployees(departmentDepth, isLastLevel) {
   return employees
 }
 
+const MAX_LEVELS = 6
+
+// The greater the depth of the department (more close to the base), the less employees.
+function numberOfDepartments(departmentDepth) {
+  if(departmentDepth >= MAX_LEVELS ) return 0
+
+  const MAX_DEPARTMENTS = 12
+  const LEVEL_MULTIPLIER = 2
+
+  const maxDepartments = Math.min(MAX_DEPARTMENTS, (MAX_LEVELS - departmentDepth) * LEVEL_MULTIPLIER)
+  return Math.floor(random() * maxDepartments);
+}
+
+
 function generateDepartment(name, departmentDepth, maxDepth) {
   if (departmentDepth > maxDepth) return null; // Nothing here
 
@@ -48,8 +62,9 @@ function generateDepartment(name, departmentDepth, maxDepth) {
 
 }
 
-for(let level=0; level<=5; level++)
-  console.log(level, generateEmployees(level, level === 5))
+for(let level=0; level<=6; level++)
+  // console.log(level, generateEmployees(level, level === 5))
+  console.log(level, numberOfDepartments(level))
 
 
 // for(let i=0; i<10; i++)
