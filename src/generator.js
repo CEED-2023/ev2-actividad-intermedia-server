@@ -1,10 +1,18 @@
 import { setSeed, random } from './generators/random.js';
+import { generateCompanyName } from './generators/company_generator.js';
 import generateName from './generators/name_generator.js';
-import { departmentIterator } from './generators/departments_generator.js';
+import { generateRandomID, createDepartmentIterator } from './generators/departments_generator.js';
 
 //setSeed(1234)
 
-const iterator = departmentIterator();
+const departmentIterator = createDepartmentIterator();
+
+
+function randomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(random() * (max - min + 1)) + min;
+}
 
 
 // The greater the depth of the department (more close to the base), the more employees.
@@ -13,11 +21,11 @@ function numberOfEmployees(departmentDepth) {
   const LEVEL_MULTIPLIER = 2
 
   const maxEmployees = Math.min(MAX_EMPLOYEES, departmentDepth * LEVEL_MULTIPLIER)
-  return Math.floor(random() * maxEmployees);
+  return randomInt(0, maxEmployees)
 }
 
-function generateEmployees(departmentDepth, isLastLevel) {
-  const minEmployees = isLastLevel ? 1 : 0 // The last element has at least one employee
+function generateEmployees(departmentDepth, maxDepth) {
+  const minEmployees = departmentDepth === maxDepth ? 1 : 0 // The last element has at least one employee
   const employeesCount = Math.max(minEmployees, numberOfEmployees(departmentDepth))
 
   const employees = []
@@ -27,44 +35,69 @@ function generateEmployees(departmentDepth, isLastLevel) {
   return employees
 }
 
-const MAX_LEVELS = 6
 
-// The greater the depth of the department (more close to the base), the less employees.
-function numberOfDepartments(departmentDepth) {
-  if(departmentDepth >= MAX_LEVELS ) return 0
 
-  const MAX_DEPARTMENTS = 12
+// The greater the depth of the department (more close to the base), the less departments.
+function numberOfDepartments(departmentDepth, maxDepth) {
+  if(departmentDepth >= maxDepth ) return 0
+
+  const MAX_DEPARTMENTS = 2 * maxDepth
   const LEVEL_MULTIPLIER = 2
 
-  const maxDepartments = Math.min(MAX_DEPARTMENTS, (MAX_LEVELS - departmentDepth) * LEVEL_MULTIPLIER)
-  return Math.floor(random() * maxDepartments);
+  const maxDepartments = Math.min(MAX_DEPARTMENTS, (maxDepth - departmentDepth) * LEVEL_MULTIPLIER)
+  const minDepartments = departmentDepth < maxDepth ? 1 : 0 // The tree has the same number of levels for all branches
+  return Math.max(minDepartments, randomInt(0,maxDepartments))
 }
 
 
-function generateDepartment(name, departmentDepth, maxDepth) {
+function generateDepartment(departmentDepth, maxDepth, name) {
   if (departmentDepth > maxDepth) return null; // Nothing here
 
+  // Generate sub levels
   let subDepartments = []
 
-  if (departmentDepth < maxDepth) {} // Generate sub levels
+  if (departmentDepth < maxDepth) {
+    const departmentsCount = numberOfDepartments(departmentDepth, maxDepth)
 
-  const employees = generateEmployees(departmentDepth, departmentDepth === maxDepth)
-  // Generate employees
-  // The last element has at least one employee
+    for(let i=0; i<departmentsCount; i++) {
+      const subDepartment = generateDepartment(departmentDepth + 1, maxDepth)
+      subDepartment && subDepartments.push(subDepartment)
+    }
+  }
 
   // Data of this department
-  const department = {
-    foo: iterator.next().value,
-    employees: employees,
+  return {
+    id: generateRandomID(),
+    name: name || departmentIterator.next().value.name,
+    employees: generateEmployees(departmentDepth, maxDepth),
     departments: subDepartments,
   };
-
-
 }
 
-for(let level=0; level<=6; level++)
-  // console.log(level, generateEmployees(level, level === 5))
-  console.log(level, numberOfDepartments(level))
+
+
+
+const MAX_LEVELS = 5
+const levels = randomInt(2, MAX_LEVELS)
+// const levels = 5
+const foo = {
+  company: generateCompanyName(),
+  departments: [
+    generateDepartment( 1 , levels, 'Presidencia')
+  ]
+}
+console.log(JSON.stringify(foo, null, 2))
+
+// for(let level=0; level<=10; level++)
+//   console.log(generateCompanyName())
+
+
+// for(let level=0; level<=6; level++) {
+//   let items = []
+//   for(let item=0; item<=10; item++) items.push(numberOfDepartments(level))
+//   console.log(level, items.join(','))
+// }
+
 
 
 // for(let i=0; i<10; i++)
