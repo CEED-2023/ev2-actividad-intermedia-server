@@ -190,9 +190,10 @@ function fisherYatesshuffle(array) {
 }
 
 function* createDepartmentIterator() {
-  const departmentList = fisherYatesshuffle(DEPARTMENT_NAMES)
-  for(const department of departmentList) yield { id: generateRandomID(), name: department}
-
+  while(true) {
+    const departmentList = fisherYatesshuffle(DEPARTMENT_NAMES)
+    for(const department of departmentList) yield { id: generateRandomID(), name: department}
+  }
 }
 
 function randomDepartment() {

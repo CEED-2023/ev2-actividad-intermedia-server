@@ -1,8 +1,8 @@
 import randomName from './names.js'
 import randomSurname from './surnames.js'
 
-function generateName() {
+function generatePersonName() {
   return `${randomSurname()} ${randomSurname()}, ${randomName()}`
 }
 
-export default generateName
+export default generatePersonName
