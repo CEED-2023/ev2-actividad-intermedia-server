@@ -1,6 +1,6 @@
 import { generateCompany } from './generators/company_generator.js'
 
-function departmentId(department) {
+function onlyId(department) {
   return department.id
 }
 
@@ -25,7 +25,7 @@ async function routes(fastify, _options) {
     return {
       id: company.id,
       name: company.company_name,
-      departments: company.departments.map(departmentId)
+      departments: company.departments.map(onlyId)
     }
   }
 
