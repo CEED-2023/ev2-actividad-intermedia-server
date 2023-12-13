@@ -85,12 +85,6 @@ function generateCompany(id) {
   }
 }
 
-// TO-DO: add wally to the company
-
-// TO-DO: remove this
-let company = generateCompany(1)
-console.log(JSON.stringify(company, null, 2))
-
 export {
   generateCompany
 }
