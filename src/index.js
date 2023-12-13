@@ -3,6 +3,9 @@ import Fastify from 'fastify'
 import company from './company.js'
 import department from './department.js'
 
+const DEFAULT_PORT = 3000
+const PORT = process.env.PORT || DEFAULT_PORT // Heroku assigns you a port
+
 const fastify = Fastify({
   logger: true
 })
@@ -11,7 +14,7 @@ const fastify = Fastify({
 try {
   fastify.register(company)
   fastify.register(department)
-  await fastify.listen({ port: 3000, host: '0.0.0.0' })
+  fastify.listen({ port: PORT, host: '0.0.0.0' })
 } catch (err) {
   fastify.log.error(err)
   process.exit(1)
