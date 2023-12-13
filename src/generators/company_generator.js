@@ -1,14 +1,8 @@
-import { setSeed, random } from './random.js';
+import { setSeed, randomInt } from './random.js';
 import { generateCompanyName } from './company_name_generator.js';
 import generatePersonName from './person_name_generator.js';
 import { generateRandomID, createDepartmentIterator } from './departments_generator.js';
-
-function randomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(random() * (max - min + 1)) + min;
-}
-
+import addWally from './utils/add_wally.js';
 
 // The greater the depth of the department (more close to the base), the more employees.
 function numberOfEmployees(departmentDepth) {
@@ -75,14 +69,17 @@ function generateCompany(id) {
 
   const departmentIterator = createDepartmentIterator();
 
-  // const levels = 5
-  return {
+  const company = {
     id,
     company_name: generateCompanyName(),
     departments: [
       generateDepartment(departmentIterator, 1 , levels, 'Presidencia')
     ]
   }
+
+  // We need the company to have a Wally
+  addWally(company)
+  return company
 }
 
 export {
