@@ -2,7 +2,7 @@ import { generateCompany } from './generators/company_generator.js'
 import {
   DEPARTMENT_REQUEST_SCHEMA,
   DEPARTMENT_TEST_SCHEMA
-} from './department_schemas.js'
+} from './schemas/department_schemas.js'
 
 function onlyId(department) {
   return department.id

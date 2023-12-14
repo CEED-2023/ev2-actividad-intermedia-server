@@ -3,6 +3,7 @@ import Fastify from 'fastify'
 import fastifySwagger from "@fastify/swagger";
 import fastifySwaggerUi from "@fastify/swagger-ui";
 
+import commonSchemas from './schemas/common_schemas.js'
 import company from './company.js'
 import department from './department.js'
 
@@ -37,7 +38,11 @@ const swaggerOptions = {
         },
       }
   },
-};
+}
+
+commonSchemas.forEach( schema => fastify.addSchema(schema))
+
+
 
 const swaggerUiOptions = {
   routePrefix: "/docs",

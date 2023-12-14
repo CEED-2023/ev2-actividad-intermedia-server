@@ -4,7 +4,7 @@ import {
   COMPANY_REQUEST_SCHEMA,
   COMPANY_TEST_SCHEMA,
   COMPANY_FULL_SCHEMA
-} from './company_schemas.js'
+} from './schemas/company_schemas.js'
 
 function onlyId(department) {
   return department.id

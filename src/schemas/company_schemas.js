@@ -56,13 +56,15 @@ const COMPANY_FULL_RESPONSE = {
   200: {
     type: "object",
     properties: {
-      user: { $ref: "User" },
+      // user: { $ref: "User" },
+      user: { $ref: 'User#' },
       id: { type: "integer" },
       company_name: { type: "string" },
       departments: {
         type: "array",
         items: {
-          "$ref": "#/definitions/department"
+          // $ref: "#/definitions/department"
+          type: "string"
         }
       }
     },
