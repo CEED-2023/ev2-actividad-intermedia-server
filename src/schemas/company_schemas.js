@@ -38,9 +38,7 @@ const COMPANY_FULL_RESPONSE = {
       company_name: { type: "string" },
       departments: {
         type: "array",
-        items: {
-          items: { $ref: 'Department_Recursive#' },
-        }
+        items: { $ref: 'Department_Recursive#' },
       }
     },
     required: ["id", "company_name", "departments"]
@@ -70,7 +68,7 @@ This way, you can use your own data to test the API.
       company_data: { type: 'object' }
     }
   },
-  response: COMPANY_FULL_RESPONSE
+  response: COMPANY_RESPONSE
 }
 
 export {

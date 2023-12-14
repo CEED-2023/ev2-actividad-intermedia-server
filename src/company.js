@@ -37,7 +37,7 @@ async function routes(fastify, _options) {
   // Get the full company for debuggin purposes
   fastify.get(
     '/company/full',
-    // { schema: COMPANY_FULL_SCHEMA },
+    { schema: COMPANY_FULL_SCHEMA },
     async (request, _reply) => {
       const id = request.query.id
       return generateCompany(id)
@@ -50,6 +50,9 @@ async function routes(fastify, _options) {
     async (request, _reply) => {
       let company = request.body.company_data
 
+      const foo =  companyData(company)
+      console.log(foo)
+      
       return companyData(company)
     }
   )

@@ -18,6 +18,7 @@ const DEPARTMENT_SCHEMA =  {
 
 const RECURSIVE_DEPARTMENT_SCHEMA =  {
   $id: 'Department_Recursive',
+  title: "Department with recursive departments",
   type: "object",
   properties: {
     id: { type: "string" },
