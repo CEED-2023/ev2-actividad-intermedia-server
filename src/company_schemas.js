@@ -56,6 +56,7 @@ const COMPANY_FULL_RESPONSE = {
   200: {
     type: "object",
     properties: {
+      user: { $ref: "User" },
       id: { type: "integer" },
       company_name: { type: "string" },
       departments: {
@@ -75,7 +76,7 @@ const COMPANY_FULL_SCHEMA = {
 
   // definitions: COMPANY_FULL_DEFINITIONS,
   querystring: COMPANY_QUERYSTRING_SCHEMA,
-  // response: COMPANY_FULL_RESPONSE
+  response: COMPANY_FULL_RESPONSE
 }
 
 const COMPANY_TEST_SCHEMA = {

@@ -25,6 +25,17 @@ const swaggerOptions = {
       consumes: ["application/json"],
       produces: ["application/json"],
       tags: [{ name: "Default", description: "Default" }],
+      definitions: {
+        // Define your data models here
+        User: {
+          type: 'object',
+          properties: {
+            id: { type: 'integer' },
+            name: { type: 'string' },
+            email: { type: 'string', format: 'email' },
+          },
+        },
+      }
   },
 };
 
