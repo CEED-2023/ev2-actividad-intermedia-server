@@ -1,19 +1,3 @@
-/*
-{
-	"id": "FY904E2M",
-	"name": "Presidencia",
-	"employees": [
-		"Vergara Vera, Silvia",
-		"Escobar Sánchez, Enrique"
-	],
-	"departments": [
-		"YLI62L58",
-		"766A34CX"
-	]
-}
-*/
-
-
 const DEPARTMENT_RESPONSE = {
   200: {
     description: 'Department found',
@@ -30,7 +14,7 @@ const DEPARTMENT_RESPONSE = {
         items: { type: 'string' }
       }
     },
-    // required: ['id', 'name', 'employees', 'departments']
+    required: ['id', 'name', 'employees', 'departments']
   },
   400: {
     description: 'Department not found',
@@ -42,6 +26,7 @@ const DEPARTMENT_RESPONSE = {
 const DEPARTMENT_REQUEST_SCHEMA = {
   summary: "Get the department's data",
   description: "Gets the department's data for the given company_id and department_id",
+
   querystring: {
     type: 'object',
     required: ['company_id', 'department_id'],
@@ -54,6 +39,13 @@ const DEPARTMENT_REQUEST_SCHEMA = {
 }
 
 const DEPARTMENT_TEST_SCHEMA = {
+  summary: "Get the department's data for a provided company",
+  description: "\
+Gets the department's data for the given `company_id` and `department_id`. \
+The full company's data is provided in the body of the request. \
+This way, you can use your own data to test the API. \
+    ",
+
   body: {
     type: 'object',
     required: ['company_id', 'department_id', 'company_data'],
@@ -62,7 +54,8 @@ const DEPARTMENT_TEST_SCHEMA = {
       department_id: { type: 'string' },
       company_data: { type: 'object' }
     }
-  }
+  },
+  response: DEPARTMENT_RESPONSE
 };
 
 export {
