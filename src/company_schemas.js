@@ -69,8 +69,6 @@ const COMPANY_FULL_RESPONSE = {
   }
 }
 
-
-
 const COMPANY_FULL_SCHEMA = {
   summary: "Get all the company's data at once",
   description: "Gets the company's data for the given id",
@@ -80,6 +78,11 @@ const COMPANY_FULL_SCHEMA = {
 }
 
 const COMPANY_TEST_SCHEMA = {
+  summary: "Returns data for a provided company",
+  description: `
+Gets the company's data. The full company's data is provided in the body of the request. \
+This way, you can use your own data to test the API.
+  `,
   body: {
     type: 'object',
     required: ['id', 'company_data'],
@@ -87,13 +90,12 @@ const COMPANY_TEST_SCHEMA = {
       id: { type: 'string' },
       company_data: { type: 'object' }
     }
-  }
+  },
+  response: COMPANY_RESPONSE
 }
 
 export {
   COMPANY_REQUEST_SCHEMA,
   COMPANY_FULL_SCHEMA,
   COMPANY_TEST_SCHEMA,
-
-  COMPANY_FULL_DEFINITIONS
 }

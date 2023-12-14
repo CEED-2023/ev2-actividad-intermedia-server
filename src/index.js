@@ -20,7 +20,7 @@ const swaggerOptions = {
           description: "API con compañías para las que ha trabajado Wally",
           version: "1.0.0",
       },
-      host: "localhost",
+      // host: "localhost",
       schemes: ["http", "https"],
       consumes: ["application/json"],
       produces: ["application/json"],

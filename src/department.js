@@ -1,4 +1,8 @@
 import { generateCompany } from './generators/company_generator.js'
+import {
+  DEPARTMENT_REQUEST_SCHEMA,
+  DEPARTMENT_TEST_SCHEMA
+} from './department_schemas.js'
 
 function onlyId(department) {
   return department.id
@@ -21,38 +25,6 @@ function searchDepartmentById(departments, targetId) {
 
 async function routes(fastify, _options) {
 
-  const DEPARTMENT_REQUEST_SCHEMA = {
-    querystring: {
-      type: 'object',
-      required: ['company_id', 'department_id'],
-      properties: {
-        company_id: {
-          type: 'integer'
-        },
-        department_id: {
-          type: 'string'
-        }
-      }
-    }
-  }
-
-  const DEPARTMENT_TEST_SCHEMA = {
-    body: {
-      type: 'object',
-      required: ['company_id', 'department_id', 'company_data'],
-      properties: {
-        company_id: {
-          type: 'integer'
-        },
-        department_id: {
-          type: 'string'
-        },
-        company_data: { type: 'object' }
-      }
-    }
-  };
-
-
   function departmentData(company, departmentId) {
     let department = searchDepartmentById(company.departments, departmentId)
     if(!department) {
@@ -70,7 +42,7 @@ async function routes(fastify, _options) {
   fastify.get(
     '/department',
     { schema: DEPARTMENT_REQUEST_SCHEMA },
-    async function handler(request, _reply) {
+    async function handler(request, reply) {
       const companyId = request.query.company_id
       const departmentId = request.query.department_id
 
@@ -79,21 +51,21 @@ async function routes(fastify, _options) {
       try {
         return departmentData(company, departmentId)
       } catch (error) {
-        return { error: error.message }
+        return reply.code(400).send({ error: error.message });
       }
     })
 
     fastify.post(
       '/department/test',
       { schema: DEPARTMENT_TEST_SCHEMA },
-      async function handler(request, _reply) {
+      async function handler(request, reply) {
         const departmentId = request.body.department_id
         let company = request.body.company_data
 
         try {
           return departmentData(company, departmentId)
         } catch (error) {
-          return { error: error.message }
+          return reply.code(400).send({ error: error.message });
         }
       })
 
