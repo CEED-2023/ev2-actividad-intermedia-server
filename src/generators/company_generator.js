@@ -70,7 +70,7 @@ function generateCompany(id) {
   const departmentIterator = createDepartmentIterator();
 
   const company = {
-    id,
+    id: parseInt(id),
     company_name: generateCompanyName(),
     departments: [
       generateDepartment(departmentIterator, 1 , levels, 'Presidencia')
