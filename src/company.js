@@ -16,17 +16,33 @@ const COMPANY_REQUEST_SCHEMA = {
   }
 }
 
+const COMPANY_TEST_SCHEMA = {
+  body: {
+    type: 'object',
+    required: ['id', 'company_data'],
+    properties: {
+      id: { type: 'string' },
+      company_data: { type: 'object' }
+    }
+  }
+};
+
 async function routes(fastify, _options) {
 
-  async function companyData_handler(request, _reply) {
-    const id = request.query.id
-    let company = generateCompany(id)
 
+  function companyData(company) {
     return {
       id: company.id,
       name: company.company_name,
       departments: company.departments.map(onlyId)
     }
+  }
+
+  async function companyData_handler(request, _reply) {
+    const id = request.query.id
+    let company = generateCompany(id)
+
+    return companyData(company)
   }
 
   ['/', '/company'].forEach(path => {
@@ -47,6 +63,17 @@ async function routes(fastify, _options) {
       return generateCompany(id)
     }
   )
+
+  fastify.post(
+    '/company/test',
+    { schema: COMPANY_TEST_SCHEMA },
+    async (request, _reply) => {
+      let company = request.body.company_data
+
+      return companyData(company)
+    }
+  )
+
 }
 
 
