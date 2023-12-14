@@ -1,20 +1,7 @@
 const DEPARTMENT_RESPONSE = {
   200: {
     description: 'Department found',
-    type: 'object',
-    properties: {
-      id: { type: 'string' },
-      name: { type: 'string' },
-      employees: {
-        type: 'array',
-        items: { type: 'string' }
-      },
-      departments: {
-        type: 'array',
-        items: { type: 'string' }
-      }
-    },
-    required: ['id', 'name', 'employees', 'departments']
+    $ref: 'Department#'
   },
   400: {
     description: 'Department not found',

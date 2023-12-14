@@ -16,7 +16,7 @@ async function routes(fastify, _options) {
   function companyData(company) {
     return {
       id: company.id,
-      name: company.company_name,
+      company_name: company.company_name,
       departments: company.departments.map(onlyId)
     }
   }
@@ -37,7 +37,7 @@ async function routes(fastify, _options) {
   // Get the full company for debuggin purposes
   fastify.get(
     '/company/full',
-    { schema: COMPANY_FULL_SCHEMA },
+    // { schema: COMPANY_FULL_SCHEMA },
     async (request, _reply) => {
       const id = request.query.id
       return generateCompany(id)

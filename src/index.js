@@ -18,31 +18,17 @@ const swaggerOptions = {
   swagger: {
       info: {
           title: "Wally Enterprises API",
-          description: "API con compañías para las que ha trabajado Wally",
+          description: "APIs with companies Wally has worked for",
           version: "1.0.0",
       },
-      // host: "localhost",
       schemes: ["http", "https"],
       consumes: ["application/json"],
       produces: ["application/json"],
-      tags: [{ name: "Default", description: "Default" }],
-      definitions: {
-        // Define your data models here
-        User: {
-          type: 'object',
-          properties: {
-            id: { type: 'integer' },
-            name: { type: 'string' },
-            email: { type: 'string', format: 'email' },
-          },
-        },
-      }
+      // tags: [{ name: "Default", description: "Default" }],
   },
 }
 
 commonSchemas.forEach( schema => fastify.addSchema(schema))
-
-
 
 const swaggerUiOptions = {
   routePrefix: "/docs",
