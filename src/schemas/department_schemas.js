@@ -28,6 +28,7 @@ const DEPARTMENT_REQUEST_SCHEMA = {
 const DEPARTMENT_TEST_SCHEMA = {
   summary: "Get the department's data for a provided company",
   description: "\
+**This endopoint is intended for testing purposes**. \n \
 Gets the department's data for the given `company_id` and `department_id`. \
 The full company's data is provided in the body of the request. \
 This way, you can use your own data to test the API. \
@@ -39,7 +40,7 @@ This way, you can use your own data to test the API. \
     properties: {
       company_id: { type: 'integer' },
       department_id: { type: 'string' },
-      company_data: { type: 'object' }
+      company_data: { $ref: 'Company#' }
     }
   },
   response: DEPARTMENT_RESPONSE

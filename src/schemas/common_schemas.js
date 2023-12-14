@@ -35,7 +35,22 @@ const RECURSIVE_DEPARTMENT_SCHEMA =  {
   required: ["id", "name", "employees", "departments"]
 }
 
+const COMPANY_DATA = {
+  $id: 'Company',
+  type: "object",
+  properties: {
+    id: { type: "integer" },
+    company_name: { type: "string" },
+    departments: {
+      type: "array",
+      items: { $ref: 'Department_Recursive#' },
+    }
+  },
+  required: ["id", "company_name", "departments"]
+}
+
 export default [
   DEPARTMENT_SCHEMA,
-  RECURSIVE_DEPARTMENT_SCHEMA
+  RECURSIVE_DEPARTMENT_SCHEMA,
+  COMPANY_DATA
 ]
