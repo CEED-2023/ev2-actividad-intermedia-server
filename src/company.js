@@ -1,34 +1,17 @@
 import { generateCompany } from './generators/company_generator.js'
 
+import {
+  COMPANY_REQUEST_SCHEMA,
+  COMPANY_TEST_SCHEMA,
+  COMPANY_FULL_SCHEMA
+} from './company_schemas.js'
+
 function onlyId(department) {
   return department.id
 }
 
-const COMPANY_REQUEST_SCHEMA = {
-  querystring: {
-    type: 'object',
-    properties: {
-      id: {
-        type: 'integer'
-      }
-    },
-    required: ['id']
-  }
-}
-
-const COMPANY_TEST_SCHEMA = {
-  body: {
-    type: 'object',
-    required: ['id', 'company_data'],
-    properties: {
-      id: { type: 'string' },
-      company_data: { type: 'object' }
-    }
-  }
-};
 
 async function routes(fastify, _options) {
-
 
   function companyData(company) {
     return {
@@ -45,19 +28,16 @@ async function routes(fastify, _options) {
     return companyData(company)
   }
 
-  ['/', '/company'].forEach(path => {
-    fastify.route({
-      method: ['GET'], // you could define multiple methods
-      url: path,
-      schema: COMPANY_REQUEST_SCHEMA,
-      handler: companyData_handler
-    })
-  })
+  fastify.get(
+    '/company',
+    { schema: COMPANY_REQUEST_SCHEMA },
+    companyData_handler
+  )
 
   // Get the full company for debuggin purposes
   fastify.get(
     '/company/full',
-    { schema: COMPANY_REQUEST_SCHEMA },
+    { schema: COMPANY_FULL_SCHEMA },
     async (request, _reply) => {
       const id = request.query.id
       return generateCompany(id)
