@@ -55,7 +55,7 @@ This way, you can use your own data to test the API. \
 
   querystring: DEPARTMENT_TEST_QUERYSTRING,
   response: DEPARTMENT_RESPONSE
-};
+}
 
 export {
   DEPARTMENT_REQUEST_SCHEMA,

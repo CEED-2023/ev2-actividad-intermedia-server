@@ -11,16 +11,16 @@ function onlyId(department) {
 function searchDepartmentById(departments, targetId) {
   for (const department of departments) {
       if (department.id === targetId) {
-          return department;
+          return department
       } else if (department.departments.length > 0) {
           // Recursively search in nested departments
-          const result = searchDepartmentById(department.departments, targetId);
+          const result = searchDepartmentById(department.departments, targetId)
           if (result) {
-              return result;
+              return result
           }
       }
   }
-  return null;
+  return null
 }
 
 async function routes(fastify, _options) {
@@ -51,7 +51,7 @@ async function routes(fastify, _options) {
       try {
         return departmentData(company, departmentId)
       } catch (error) {
-        return reply.code(400).send({ error: error.message });
+        return reply.code(400).send({ error: error.message })
       }
     })
 
@@ -66,7 +66,7 @@ async function routes(fastify, _options) {
         try {
           return departmentData(company, departmentId)
         } catch (error) {
-          return reply.code(400).send({ error: error.message });
+          return reply.code(400).send({ error: error.message })
         }
       })
 

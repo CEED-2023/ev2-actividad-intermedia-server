@@ -1,8 +1,8 @@
-import { setSeed, randomInt } from './random.js';
-import { generateCompanyName } from './company_name_generator.js';
-import generatePersonName from './person_name_generator.js';
-import { generateRandomID, createDepartmentIterator } from './departments_generator.js';
-import addWally from './utils/add_wally.js';
+import { setSeed, randomInt } from './random.js'
+import { generateCompanyName } from './company_name_generator.js'
+import generatePersonName from './person_name_generator.js'
+import { generateRandomID, createDepartmentIterator } from './departments_generator.js'
+import addWally from './utils/add_wally.js'
 
 // The greater the depth of the department (more close to the base), the more employees.
 function numberOfEmployees(departmentDepth) {
@@ -37,7 +37,7 @@ function numberOfDepartments(departmentDepth, maxDepth) {
 }
 
 function generateDepartment(departmentIterator, departmentDepth, maxDepth, name) {
-  if (departmentDepth > maxDepth) return null; // Nothing here
+  if (departmentDepth > maxDepth) return null // Nothing here
 
   // Generate sub levels
   let subDepartments = []
@@ -57,7 +57,7 @@ function generateDepartment(departmentIterator, departmentDepth, maxDepth, name)
     name: name || departmentIterator.next().value.name,
     employees: generateEmployees(departmentDepth, maxDepth),
     departments: subDepartments,
-  };
+  }
 }
 
 
@@ -67,7 +67,7 @@ function generateCompany(id) {
   const MAX_LEVELS = 5
   const levels = randomInt(2, MAX_LEVELS)
 
-  const departmentIterator = createDepartmentIterator();
+  const departmentIterator = createDepartmentIterator()
 
   const company = {
     id: parseInt(id),

@@ -168,25 +168,25 @@ const DEPARTMENT_NAMES = [
 ]
 
 function generateRandomID() {
-  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-  let randomString = '';
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+  let randomString = ''
 
   for (let i = 0; i < 8; i++) {
-    const randomIndex = Math.floor(random() * characters.length);
-    randomString += characters.charAt(randomIndex);
+    const randomIndex = Math.floor(random() * characters.length)
+    randomString += characters.charAt(randomIndex)
   }
 
-  return randomString;
+  return randomString
 }
 
 function fisherYatesshuffle(array) {
   const shuffled = [...array]
   for (let i = shuffled.length - 1; i > 0; i--) {
     const j = Math.floor(random() * (i + 1));
-    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    ([shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]])
   }
 
-  return shuffled;
+  return shuffled
 }
 
 function* createDepartmentIterator() {

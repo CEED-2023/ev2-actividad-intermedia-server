@@ -1,7 +1,7 @@
 // Import the framework and instantiate it
 import Fastify from 'fastify'
-import fastifySwagger from "@fastify/swagger";
-import fastifySwaggerUi from "@fastify/swagger-ui";
+import fastifySwagger from "@fastify/swagger"
+import fastifySwaggerUi from "@fastify/swagger-ui"
 
 import delayMiddleware from './middleware/delay_middleware.js'
 import commonSchemas from './schemas/common_schemas.js'
@@ -34,10 +34,10 @@ commonSchemas.forEach( schema => fastify.addSchema(schema))
 const swaggerUiOptions = {
   routePrefix: "/docs",
   exposeRoute: true,
-};
+}
 
-fastify.register(fastifySwagger, swaggerOptions);
-fastify.register(fastifySwaggerUi, swaggerUiOptions);
+fastify.register(fastifySwagger, swaggerOptions)
+fastify.register(fastifySwaggerUi, swaggerUiOptions)
 
 // Add a delay to all requests
 const MIN_DELAY = 500

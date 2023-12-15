@@ -67,7 +67,7 @@ const palabras1 = ['Tech',
  'Infinity',
  'Vortex',
  'Vantage',
-];
+]
 
 const palabras2 = ['Solutions',
  'Systems',
@@ -136,17 +136,17 @@ const palabras2 = ['Solutions',
  'Polaris',
  'Vortex',
  'Vantage',
-];
+]
 
 // Función para generar un nombre aleatorio de empresa
 function generateCompanyName() {
-  const palabra1 = palabras1[Math.floor(random() * palabras1.length)];
-  const palabra2 = palabras2[Math.floor(random() * palabras2.length)];
+  const palabra1 = palabras1[Math.floor(random() * palabras1.length)]
+  const palabra2 = palabras2[Math.floor(random() * palabras2.length)]
 
   // Concatenar las dos palabras para formar el nombre de la empresa
-  const nombreEmpresa = `${palabra1} ${palabra2}`;
+  const nombreEmpresa = `${palabra1} ${palabra2}`
 
-  return nombreEmpresa;
+  return nombreEmpresa
 }
 
 export {
