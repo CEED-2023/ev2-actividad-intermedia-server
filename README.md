@@ -1,97 +1,15 @@
+# Wally Enterprises API
 
+This API will generate companies given a numeric Id. The companies will always have an employee named "Wally" in one of the departments.
 
+ You can access the API's documentation at `/docs` path in the server.
 
-https://fastify.dev/docs/latest/Guides/Getting-Started
+The API is created for creating exercises for asynchronous code in JavaScript. The endpoints that should be used for that are:
+- `/company`
+- `/department`
 
-https://github.com/punkish/fastify-better-sqlite3
+There are some other endpoints created for testing:
+- `/company/full`: it will return all the company's data, instead of returning data by level. This is useful for downloading the company's data and debugging the applications.
+- `/test/department` and `/test/company`: they add a `company_data` query parameter. Passing a company's JSON in that parameter will make the endpoints work with the data provided. The JSON data must be URL encoded. You can get a company's JSON with the `/company/full` endpoint and modify it as needed.
 
-
-
-PARA LA DOCUMENTACION:
-https://ruanmartinelli.com/posts/using-schemas-fastify-fun-and-profit/
-https://stackoverflow.com/questions/76168789/how-to-setup-fastify-swagger-and-fastify-swagger-ui-with-typescript
-https://medium.com/@simonescigliuzzi/create-a-complete-web-api-set-from-scratch-with-fastify-swagger-and-heroku-c6eb1c293215
-
-
-https://stackoverflow.com/questions/75955007/fastify-swagger-how-to-use-ref
-
-
-
-https://www.baeldung.com/openapi-json-query-parameters
-
-
-
-
-Este es el JSON schema para validar una compañia
-```json
-{
-  type: "object",
-  properties: {
-    id: { type: "integer" },
-    company_name: { type: "string" },
-    departments: {
-      type: "array",
-        items: { "$ref": "#/definitions/department" }
-     }
-  },
-  required: ["id", "company_name", "departments"],
-  definitions: {
-    department: {
-      type: "object",
-      properties: {
-        id: { type: "string" },
-        name: { type: "string" },
-        employees: {
-          type: "array",
-          items: { type: "string"}
-        },
-        departments: {
-          type: "array",
-          items: { $ref: '#/definitions/department' },
-        }
-      }
-    }
-  },
-}
-```
-
-
-Esto es una compañía válida:
-```json
-{
-	"id": 1,
-	"company_name": "Ultra Universe",
-	"departments": [
-		{
-			"id": "FY904E2M",
-			"name": "Presidencia",
-			"employees": [
-				"Vergara Vera, Silvia",
-				"Escobar Sánchez, Enrique"
-			],
-			"departments": [
-				{
-					"id": "YLI62L58",
-					"name": "Asesoría Legal",
-					"employees": [
-						"Ulloa Aranda, Alicia",
-						"Flores Guzmán, Ana",
-						"León Aranda, Daniela",
-						"Sánchez Pizarro, Lucía"
-					],
-					"departments": []
-				},
-				{
-					"id": "766A34CX",
-					"name": "Desarrollo de Estrategias de Desarrollo de Negocios Digitales",
-					"employees": [
-						"Wally",
-						"Riquelme Vera, Jorge"
-					],
-					"departments": []
-				}
-			]
-		}
-	]
-}
-```
+The requests are served with a random delay. For serving the request with no delays you can provide a query parameter `delay` with value `N`.
