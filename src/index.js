@@ -42,7 +42,8 @@ fastify.register(fastifySwaggerUi, swaggerUiOptions);
 // Add a delay to all requests
 const MIN_DELAY = 500
 const MAX_DELAY = 2000
-fastify.addHook('onRequest', delayMiddleware(MIN_DELAY, MAX_DELAY))
+const EXCEPTIONS = [ /.*\/docs\// ]
+fastify.addHook('onRequest', delayMiddleware(MIN_DELAY, MAX_DELAY, EXCEPTIONS))
 
 // Run the server!
 try {
