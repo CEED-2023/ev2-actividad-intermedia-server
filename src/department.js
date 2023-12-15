@@ -55,12 +55,13 @@ async function routes(fastify, _options) {
       }
     })
 
-    fastify.post(
+    fastify.get(
       '/department/test',
       { schema: DEPARTMENT_TEST_SCHEMA },
       async function handler(request, reply) {
-        const departmentId = request.body.department_id
-        let company = request.body.company_data
+        const departmentId = request.query.department_id
+        let company_raw = request.query.company_data
+        let company = JSON.parse(company_raw)
 
         try {
           return departmentData(company, departmentId)

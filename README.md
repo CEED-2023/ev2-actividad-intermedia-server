@@ -17,6 +17,11 @@ https://stackoverflow.com/questions/75955007/fastify-swagger-how-to-use-ref
 
 
 
+https://www.baeldung.com/openapi-json-query-parameters
+
+
+
+
 Este es el JSON schema para validar una compañia
 ```json
 {

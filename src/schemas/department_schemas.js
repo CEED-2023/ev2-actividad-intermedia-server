@@ -1,3 +1,12 @@
+const DEPARTMENT_QUERYSTRING = {
+  type: 'object',
+  required: ['company_id', 'department_id'],
+  properties: {
+    company_id: { type: 'integer' },
+    department_id: { type: 'string' }
+  }
+}
+
 const DEPARTMENT_RESPONSE = {
   200: {
     description: 'Department found',
@@ -14,15 +23,19 @@ const DEPARTMENT_REQUEST_SCHEMA = {
   summary: "Get the department's data",
   description: "Gets the department's data for the given company_id and department_id",
 
-  querystring: {
-    type: 'object',
-    required: ['company_id', 'department_id'],
-    properties: {
-      company_id: { type: 'integer' },
-      department_id: { type: 'string' }
-    }
-  },
+  querystring: DEPARTMENT_QUERYSTRING,
   response: DEPARTMENT_RESPONSE
+}
+
+
+const DEPARTMENT_TEST_QUERYSTRING = {
+  type: 'object',
+  required: ['company_id', 'department_id'],
+  properties: {
+    company_id: { type: 'integer' },
+    department_id: { type: 'string' },
+    company_data: { type: 'string' }
+  }
 }
 
 const DEPARTMENT_TEST_SCHEMA = {
@@ -34,15 +47,7 @@ The full company's data is provided in the body of the request. \
 This way, you can use your own data to test the API. \
     ",
 
-  body: {
-    type: 'object',
-    required: ['company_id', 'department_id', 'company_data'],
-    properties: {
-      company_id: { type: 'integer' },
-      department_id: { type: 'string' },
-      company_data: { $ref: 'Company#' }
-    }
-  },
+  querystring: DEPARTMENT_TEST_QUERYSTRING,
   response: DEPARTMENT_RESPONSE
 };
 
