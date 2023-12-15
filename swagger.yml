@@ -1,0 +1,249 @@
+swagger: "2.0"
+info:
+  title: Wally Enterprises API
+  description: APIs with companies Wally has worked for
+  version: 1.0.0
+definitions:
+  def-0:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      employees:
+        type: array
+        items:
+          type: string
+      departments:
+        type: array
+        items:
+          type: string
+    required:
+      - id
+      - name
+      - employees
+      - departments
+    title: Department
+  def-1:
+    title: Department with recursive departments
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      employees:
+        type: array
+        items:
+          type: string
+      departments:
+        type: array
+        items:
+          $ref: "#/definitions/def-1"
+    required:
+      - id
+      - name
+      - employees
+      - departments
+  def-2:
+    type: object
+    properties:
+      id:
+        type: integer
+      company_name:
+        type: string
+      departments:
+        type: array
+        items:
+          $ref: "#/definitions/def-1"
+    required:
+      - id
+      - company_name
+      - departments
+    title: Company
+paths:
+  /company:
+    get:
+      summary: Get company's data
+      description: >2-
+         Gets the company's data for the given `id` 
+         **The `delay` parameter should be used only for testing purposes**. If present with value `N`, the responses won't be randomly delayed.
+      parameters:
+        - type: integer
+          required: true
+          in: query
+          name: id
+        - enum:
+            - N
+          required: false
+          in: query
+          name: delay
+      responses:
+        "200":
+          description: Returns company data
+          schema:
+            description: Returns company data
+            type: object
+            properties:
+              id:
+                type: number
+              company_name:
+                type: string
+              departments:
+                type: array
+                items:
+                  type: string
+  /company/full:
+    get:
+      summary: Get all the company's data at once
+      description: >-
+        **This endpoint is intended for debugging purposes**. 
+         Gets the company's data for the given `id`.
+         If `delay` parameter is present with value `N`, the responses won't be randomly delayed.
+      parameters:
+        - type: integer
+          required: true
+          in: query
+          name: id
+        - enum:
+            - N
+          required: false
+          in: query
+          name: delay
+      responses:
+        "200":
+          description: Default Response
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+              company_name:
+                type: string
+              departments:
+                type: array
+                items:
+                  $ref: "#/definitions/def-1"
+            required:
+              - id
+              - company_name
+              - departments
+  /test/company:
+    get:
+      summary: Returns data for a provided company
+      description: >-
+        
+        **This endopoint is intended for testing purposes**.
+
+        Gets the company's data. The full company's data is provided in the `company_data` parameter. This way, you can use your own data to test the API. 
+         If `delay` parameter is present with value `N`, the responses won't be randomly delayed.  
+      parameters:
+        - type: integer
+          required: true
+          in: query
+          name: id
+        - enum:
+            - N
+          required: false
+          in: query
+          name: delay
+        - type: string
+          required: false
+          in: query
+          name: company_data
+      responses:
+        "200":
+          description: Returns company data
+          schema:
+            description: Returns company data
+            type: object
+            properties:
+              id:
+                type: number
+              company_name:
+                type: string
+              departments:
+                type: array
+                items:
+                  type: string
+  /department:
+    get:
+      summary: Get the department's data
+      description: >-
+        Gets the department's data for the given `company_id` and
+        `department_id`
+         **The `delay` parameter should be used only for testing purposes**. If present with value `N`, the responses won't be randomly delayed.
+      parameters:
+        - type: integer
+          required: true
+          in: query
+          name: company_id
+        - type: string
+          required: true
+          in: query
+          name: department_id
+        - enum:
+            - N
+          required: false
+          in: query
+          name: delay
+      responses:
+        "200":
+          description: Department found
+          schema:
+            description: Department found
+            $ref: "#/definitions/def-0"
+        "400":
+          description: Department not found
+          schema:
+            description: Department not found
+            type: object
+            properties:
+              error:
+                type: string
+  /test/department:
+    get:
+      summary: Get the department's data for a provided company
+      description: >-
+        **This endopoint is intended for testing purposes**. 
+         Gets the department's data for the given `company_id` and `department_id`. The full company's data is provided in the `company_data` parameter. This way, you can use your own data to test the API.     
+      parameters:
+        - type: integer
+          required: true
+          in: query
+          name: company_id
+        - type: string
+          required: true
+          in: query
+          name: department_id
+        - enum:
+            - N
+          required: false
+          in: query
+          name: delay
+        - type: string
+          required: false
+          in: query
+          name: company_data
+      responses:
+        "200":
+          description: Department found
+          schema:
+            description: Department found
+            $ref: "#/definitions/def-0"
+        "400":
+          description: Department not found
+          schema:
+            description: Department not found
+            type: object
+            properties:
+              error:
+                type: string
+schemes:
+  - http
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json

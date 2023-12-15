@@ -1,3 +1,5 @@
+// import * as fs from 'fs';
+
 import Fastify from 'fastify'
 import fastifySwagger from "@fastify/swagger"
 import fastifySwaggerUi from "@fastify/swagger-ui"
@@ -64,6 +66,13 @@ try {
   fastify.register(company)
   fastify.register(department)
   fastify.listen({ port: PORT, host: '0.0.0.0' })
+
+  // Export documentation to yml. Uncomment this and the fs import at the
+  // top of the file to generate the yaml
+  // await fastify.listen({ port: PORT, host: '0.0.0.0' })
+  // const yaml = fastify.swagger({ yaml: true })
+  // fs.writeFileSync('./swagger.yml', yaml)
+
 } catch (err) {
   fastify.log.error(err)
   process.exit(1)
