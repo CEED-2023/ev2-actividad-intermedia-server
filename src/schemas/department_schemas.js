@@ -3,7 +3,8 @@ const DEPARTMENT_QUERYSTRING = {
   required: ['company_id', 'department_id'],
   properties: {
     company_id: { type: 'integer' },
-    department_id: { type: 'string' }
+    department_id: { type: 'string' },
+    delay: {"enum": ["N"]},
   }
 }
 
@@ -21,7 +22,11 @@ const DEPARTMENT_RESPONSE = {
 
 const DEPARTMENT_REQUEST_SCHEMA = {
   summary: "Get the department's data",
-  description: "Gets the department's data for the given company_id and department_id",
+  description: "\
+Gets the department's data for the given `company_id` and `department_id`\n \
+**The `delay` parameter should be used only for testing purposes**. \
+If present with value `N`, the responses won't be randomly delayed.\
+",
 
   querystring: DEPARTMENT_QUERYSTRING,
   response: DEPARTMENT_RESPONSE
@@ -34,6 +39,7 @@ const DEPARTMENT_TEST_QUERYSTRING = {
   properties: {
     company_id: { type: 'integer' },
     department_id: { type: 'string' },
+    delay: {"enum": ["N"]},
     company_data: { type: 'string' }
   }
 }
@@ -43,7 +49,7 @@ const DEPARTMENT_TEST_SCHEMA = {
   description: "\
 **This endopoint is intended for testing purposes**. \n \
 Gets the department's data for the given `company_id` and `department_id`. \
-The full company's data is provided in the body of the request. \
+The full company's data is provided in the `company_data` parameter. \
 This way, you can use your own data to test the API. \
     ",
 

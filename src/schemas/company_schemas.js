@@ -1,10 +1,10 @@
 const COMPANY_QUERYSTRING = {
   type: 'object',
+  required: ['id'],
   properties: {
     id: { type: 'integer' },
     delay: {"enum": ["N"]}
   },
-  required: ['id'],
 }
 
 const COMPANY_RESPONSE = {
@@ -25,8 +25,9 @@ const COMPANY_RESPONSE = {
 const COMPANY_REQUEST_SCHEMA = {
   summary: "Get company's data",
   description: " \
-Gets the company's data for the given id \n \
-**The `delay` parameter should be used only for testing purposes**.\
+Gets the company's data for the given `id` \n \
+**The `delay` parameter should be used only for testing purposes**. \
+If present with value `N`, the responses won't be randomly delayed.\
 ",
 
   querystring: COMPANY_QUERYSTRING,
@@ -52,7 +53,8 @@ const COMPANY_FULL_SCHEMA = {
   summary: "Get all the company's data at once",
   description: "\
 **This endpoint is intended for debugging purposes**. \n \
-Gets the company's data for the given id.\
+Gets the company's data for the given `id`.\n \
+If `delay` parameter is present with value `N`, the responses won't be randomly delayed.\
 ",
 
   querystring: COMPANY_QUERYSTRING,
@@ -61,12 +63,12 @@ Gets the company's data for the given id.\
 
 const COMPANY_TEST_QUERYSTRING = {
   type: 'object',
+  required: ['id'],
   properties: {
     id: { type: 'integer' },
     delay: {"enum": ["N"]},
     company_data: { type: 'string' }
   },
-  required: ['id'],
 }
 
 const COMPANY_TEST_SCHEMA = {
@@ -74,7 +76,8 @@ const COMPANY_TEST_SCHEMA = {
   description: `
 **This endopoint is intended for testing purposes**.
 Gets the company's data. The full company's data is provided in the \`company_data\` parameter. \
-This way, you can use your own data to test the API.
+This way, you can use your own data to test the API. \n \
+If \`delay\` parameter is present with value \`N\`, the responses won't be randomly delayed.\
   `,
 
   querystring: COMPANY_TEST_QUERYSTRING,
