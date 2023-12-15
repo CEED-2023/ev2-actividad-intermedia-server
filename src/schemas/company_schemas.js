@@ -13,20 +13,19 @@ const COMPANY_RESPONSE = {
   }
 }
 
-const COMPANY_QUERYSTRING_SCHEMA = {
+const COMPANY_QUERYSTRING = {
   type: 'object',
   properties: {
     id: { type: 'integer' }
   },
   required: ['id'],
-
 }
 
 const COMPANY_REQUEST_SCHEMA = {
   summary: "Get company's data",
   description: "Gets the company's data for the given id",
 
-  querystring: COMPANY_QUERYSTRING_SCHEMA,
+  querystring: COMPANY_QUERYSTRING,
   response: COMPANY_RESPONSE
 }
 
@@ -52,26 +51,28 @@ const COMPANY_FULL_SCHEMA = {
 Gets the company's data for the given id.\
 ",
 
-  querystring: COMPANY_QUERYSTRING_SCHEMA,
+  querystring: COMPANY_QUERYSTRING,
   response: COMPANY_FULL_RESPONSE
+}
+
+const COMPANY_TEST_QUERYSTRING = {
+  type: 'object',
+  properties: {
+    id: { type: 'integer' },
+    company_data: { type: 'string' }
+  },
+  required: ['id'],
 }
 
 const COMPANY_TEST_SCHEMA = {
   summary: "Returns data for a provided company",
   description: `
 **This endopoint is intended for testing purposes**.
-Gets the company's data. The full company's data is provided in the body of the request. \
+Gets the company's data. The full company's data is provided in the \`company_data\` parameter. \
 This way, you can use your own data to test the API.
   `,
 
-  body: {
-    type: 'object',
-    required: ['id', 'company_data'],
-    properties: {
-      id: { type: 'string' },
-      company_data: { $ref: 'Company#' }
-    }
-  },
+  querystring: COMPANY_TEST_QUERYSTRING,
   response: COMPANY_RESPONSE
 }
 

@@ -44,15 +44,13 @@ async function routes(fastify, _options) {
     }
   )
 
-  fastify.post(
+  fastify.get(
     '/company/test',
     { schema: COMPANY_TEST_SCHEMA },
     async (request, _reply) => {
-      let company = request.body.company_data
+      let company_raw = request.query.company_data
+      let company = JSON.parse(company_raw)
 
-      const foo =  companyData(company)
-      console.log(foo)
-      
       return companyData(company)
     }
   )
