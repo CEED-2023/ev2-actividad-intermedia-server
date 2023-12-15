@@ -1,3 +1,12 @@
+const COMPANY_QUERYSTRING = {
+  type: 'object',
+  properties: {
+    id: { type: 'integer' },
+    delay: {"enum": ["N"]}
+  },
+  required: ['id'],
+}
+
 const COMPANY_RESPONSE = {
   200: {
     description: 'Returns company data',
@@ -13,17 +22,12 @@ const COMPANY_RESPONSE = {
   }
 }
 
-const COMPANY_QUERYSTRING = {
-  type: 'object',
-  properties: {
-    id: { type: 'integer' }
-  },
-  required: ['id'],
-}
-
 const COMPANY_REQUEST_SCHEMA = {
   summary: "Get company's data",
-  description: "Gets the company's data for the given id",
+  description: " \
+Gets the company's data for the given id \n \
+**The `delay` parameter should be used only for testing purposes**.\
+",
 
   querystring: COMPANY_QUERYSTRING,
   response: COMPANY_RESPONSE
@@ -59,6 +63,7 @@ const COMPANY_TEST_QUERYSTRING = {
   type: 'object',
   properties: {
     id: { type: 'integer' },
+    delay: {"enum": ["N"]},
     company_data: { type: 'string' }
   },
   required: ['id'],
