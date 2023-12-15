@@ -56,7 +56,7 @@ async function routes(fastify, _options) {
     })
 
     fastify.get(
-      '/department/test',
+      '/test/department',
       { schema: DEPARTMENT_TEST_SCHEMA },
       async function handler(request, reply) {
         const departmentId = request.query.department_id

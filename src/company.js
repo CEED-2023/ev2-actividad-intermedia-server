@@ -45,7 +45,7 @@ async function routes(fastify, _options) {
   )
 
   fastify.get(
-    '/company/test',
+    '/test/company',
     { schema: COMPANY_TEST_SCHEMA },
     async (request, _reply) => {
       let company_raw = request.query.company_data
