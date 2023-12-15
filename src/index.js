@@ -1,4 +1,3 @@
-// Import the framework and instantiate it
 import Fastify from 'fastify'
 import fastifySwagger from "@fastify/swagger"
 import fastifySwaggerUi from "@fastify/swagger-ui"
@@ -17,32 +16,47 @@ const fastify = Fastify({
 
 const swaggerOptions = {
   swagger: {
-      info: {
-          title: "Wally Enterprises API",
-          description: "APIs with companies Wally has worked for",
-          version: "1.0.0",
-      },
-      schemes: ["http", "https"],
-      consumes: ["application/json"],
-      produces: ["application/json"],
-      // tags: [{ name: "Default", description: "Default" }],
+    info: {
+      title: "Wally Enterprises API",
+      description: "APIs with companies Wally has worked for",
+      version: "1.0.0",
+    },
+    schemes: ["http", "https"],
+    consumes: ["application/json"],
+    produces: ["application/json"],
   },
 }
 
-commonSchemas.forEach( schema => fastify.addSchema(schema))
+// Code is not showing correctly in the Swagger UI, so we add some custom CSS
+const CUSTOM_CSS = `
+.swagger-ui .markdown p {
+  line-height: 1.4em;
+}
+
+.swagger-ui .markdown code, .swagger-ui .renderedMarkdown code {
+  padding: 3px 5px;
+}
+`
 
 const swaggerUiOptions = {
   routePrefix: "/docs",
   exposeRoute: true,
+  theme: {
+    title: 'Wally Enterprises API',
+    css: [
+      { filename: 'theme.css' , content: CUSTOM_CSS }
+    ],
+  },
 }
 
+commonSchemas.forEach(schema => fastify.addSchema(schema))
 fastify.register(fastifySwagger, swaggerOptions)
 fastify.register(fastifySwaggerUi, swaggerUiOptions)
 
-// Add a delay to all requests
+// Adds a delay to all requests
 const MIN_DELAY = 500
 const MAX_DELAY = 2000
-const EXCEPTIONS = [ /.*\/docs\// ]
+const EXCEPTIONS = [/.*\/docs\//]
 fastify.addHook('onRequest', delayMiddleware(MIN_DELAY, MAX_DELAY, EXCEPTIONS))
 
 // Run the server!
