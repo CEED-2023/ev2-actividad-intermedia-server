@@ -3,6 +3,7 @@ import Fastify from 'fastify'
 import fastifySwagger from "@fastify/swagger";
 import fastifySwaggerUi from "@fastify/swagger-ui";
 
+import delayMiddleware from './middleware/delay_middleware.js'
 import commonSchemas from './schemas/common_schemas.js'
 import company from './company.js'
 import department from './department.js'
@@ -37,6 +38,11 @@ const swaggerUiOptions = {
 
 fastify.register(fastifySwagger, swaggerOptions);
 fastify.register(fastifySwaggerUi, swaggerUiOptions);
+
+// Add a delay to all requests
+const MIN_DELAY = 500
+const MAX_DELAY = 2000
+fastify.addHook('onRequest', delayMiddleware(MIN_DELAY, MAX_DELAY))
 
 // Run the server!
 try {
