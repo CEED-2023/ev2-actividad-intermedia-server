@@ -6,6 +6,7 @@ import fastifySwaggerUi from "@fastify/swagger-ui"
 
 import delayMiddleware from './middleware/delay_middleware.js'
 import errorMiddleware from './middleware/error_middleware.js'
+import { swaggerOptions, swaggerUiOptions } from './swagger.js'
 
 import commonSchemas from './schemas/common_schemas.js'
 import company from './company.js'
@@ -17,41 +18,6 @@ const PORT = process.env.PORT || DEFAULT_PORT // Heroku assigns you a port
 const fastify = Fastify({
   logger: true
 })
-
-const swaggerOptions = {
-  swagger: {
-    info: {
-      title: "Wally Enterprises API",
-      description: "APIs with companies Wally has worked for",
-      version: "1.0.0",
-    },
-    schemes: ["http", "https"],
-    consumes: ["application/json"],
-    produces: ["application/json"],
-  },
-}
-
-// Code is not showing correctly in the Swagger UI, so we add some custom CSS
-const CUSTOM_CSS = `
-.swagger-ui .markdown p {
-  line-height: 1.4em;
-}
-
-.swagger-ui .markdown code, .swagger-ui .renderedMarkdown code {
-  padding: 3px 5px;
-}
-`
-
-const swaggerUiOptions = {
-  routePrefix: "/docs",
-  exposeRoute: true,
-  theme: {
-    title: 'Wally Enterprises API',
-    css: [
-      { filename: 'theme.css' , content: CUSTOM_CSS }
-    ],
-  },
-}
 
 commonSchemas.forEach(schema => fastify.addSchema(schema))
 fastify.register(fastifySwagger, swaggerOptions)

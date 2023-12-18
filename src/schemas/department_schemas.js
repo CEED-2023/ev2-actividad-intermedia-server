@@ -5,6 +5,7 @@ const DEPARTMENT_QUERYSTRING = {
     company_id: { type: 'integer' },
     department_id: { type: 'string' },
     delay: {"enum": ["N"]},
+    errors: {"enum": ["", "N", "Y"]}
   }
 }
 
@@ -23,9 +24,7 @@ const DEPARTMENT_RESPONSE = {
 const DEPARTMENT_REQUEST_SCHEMA = {
   summary: "Get the department's data",
   description: "\
-Gets the department's data for the given `company_id` and `department_id`\n \
-**The `delay` parameter should be used only for testing purposes**. \
-If present with value `N`, the responses won't be randomly delayed.\
+Gets the department's data for the given `company_id` and `department_id` \
 ",
 
   querystring: DEPARTMENT_QUERYSTRING,
@@ -40,6 +39,7 @@ const DEPARTMENT_TEST_QUERYSTRING = {
     company_id: { type: 'integer' },
     department_id: { type: 'string' },
     delay: {"enum": ["N"]},
+    errors: {"enum": ["", "N", "Y"]},
     company_data: { type: 'string' }
   }
 }
