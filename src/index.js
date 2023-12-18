@@ -5,6 +5,8 @@ import fastifySwagger from "@fastify/swagger"
 import fastifySwaggerUi from "@fastify/swagger-ui"
 
 import delayMiddleware from './middleware/delay_middleware.js'
+import errorMiddleware from './middleware/error_middleware.js'
+
 import commonSchemas from './schemas/common_schemas.js'
 import company from './company.js'
 import department from './department.js'
@@ -59,6 +61,8 @@ fastify.register(fastifySwaggerUi, swaggerUiOptions)
 const MIN_DELAY = 500
 const MAX_DELAY = 2000
 const EXCEPTIONS = [/.*\/docs\//]
+
+fastify.addHook('onRequest', errorMiddleware)
 fastify.addHook('onRequest', delayMiddleware(MIN_DELAY, MAX_DELAY, EXCEPTIONS))
 
 // Run the server!
