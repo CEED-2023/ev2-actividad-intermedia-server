@@ -3,7 +3,7 @@ const COMPANY_QUERYSTRING = {
   required: ['id'],
   properties: {
     id: { type: 'integer' },
-    delay: {"enum": ["N"]},
+    delay: {"enum": ["", "N"]},
     errors: {"enum": ["", "N", "Y"]}
   },
 }
@@ -64,7 +64,7 @@ const COMPANY_TEST_QUERYSTRING = {
   required: ['id'],
   properties: {
     id: { type: 'integer' },
-    delay: {"enum": ["N"]},
+    delay: {"enum": ["", "N"]},
     errors: {"enum": ["", "N", "Y"]},
     company_data: { type: 'string' }
   },

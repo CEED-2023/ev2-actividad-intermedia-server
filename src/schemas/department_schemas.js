@@ -4,7 +4,7 @@ const DEPARTMENT_QUERYSTRING = {
   properties: {
     company_id: { type: 'integer' },
     department_id: { type: 'string' },
-    delay: {"enum": ["N"]},
+    delay: {"enum": ["", "N"]},
     errors: {"enum": ["", "N", "Y"]}
   }
 }
@@ -38,7 +38,7 @@ const DEPARTMENT_TEST_QUERYSTRING = {
   properties: {
     company_id: { type: 'integer' },
     department_id: { type: 'string' },
-    delay: {"enum": ["N"]},
+    delay: {"enum": ["", "N"]},
     errors: {"enum": ["", "N", "Y"]},
     company_data: { type: 'string' }
   }
