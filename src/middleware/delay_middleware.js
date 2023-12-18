@@ -10,14 +10,9 @@ function specifiedNotDelay(req) {
   return req.query.delay === 'N'
 }
 
-function isAnException(path, exceptions) {
-  return exceptions.some(exception => exception.test(path))
-}
-
-function delayMiddleware(min, max, exceptions = []) {
+function delayMiddleware(min, max) {
 
   return (req, _reply, done) => {
-    if(isAnException(req.raw.url, exceptions)) return done()
     if(specifiedNotDelay(req)) return done()
 
     const delayTime = randomInt(min, max)
