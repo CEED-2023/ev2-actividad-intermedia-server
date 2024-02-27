@@ -1,6 +1,7 @@
 // import * as fs from 'fs';
 
 import Fastify from 'fastify'
+import fastifyCors from '@fastify/cors'
 import fastifySwagger from "@fastify/swagger"
 import fastifySwaggerUi from "@fastify/swagger-ui"
 
@@ -24,6 +25,7 @@ const fastify = Fastify({
 commonSchemas.forEach(schema => fastify.addSchema(schema))
 fastify.register(fastifySwagger, swaggerOptions)
 fastify.register(fastifySwaggerUi, swaggerUiOptions)
+fastify.register(fastifyCors, { origin: '*' });
 
 // Adds a delay to all requests
 const MIN_DELAY = 500
